@@ -1,0 +1,9 @@
+import 'package:trip_tailor/widgets/app_bar/custom_app_bar.dart';import 'package:trip_tailor/widgets/app_bar/appbar_leading_image.dart';import 'package:trip_tailor/widgets/app_bar/appbar_subtitle.dart';import 'package:flutter/material.dart';import 'package:trip_tailor/core/app_export.dart';import 'controller/train_payment_pay_process_controller.dart';class TrainPaymentPayProcessScreen extends GetWidget<TrainPaymentPayProcessController> {const TrainPaymentPayProcessScreen({Key? key}) : super(key: key);
+
+@override Widget build(BuildContext context) { return SafeArea(child: Scaffold(appBar: _buildAppBar(), body: Container(width: double.maxFinite, padding: EdgeInsets.only(left: 43.h, top: 99.v, right: 43.h), child: Column(children: [CustomImageView(imagePath: ImageConstant.imgIllustrationGray10001, height: 120.adaptSize, width: 120.adaptSize, radius: BorderRadius.circular(60.h)), SizedBox(height: 35.v), Text("msg_we_re_confirming".tr, style: theme.textTheme.titleLarge), SizedBox(height: 11.v), SizedBox(width: 287.h, child: Text("msg_please_don_t_close".tr, maxLines: 2, overflow: TextOverflow.ellipsis, textAlign: TextAlign.center, style: theme.textTheme.titleSmall!.copyWith(height: 1.70))), SizedBox(height: 35.v), Container(height: 28.adaptSize, width: 28.adaptSize, decoration: BoxDecoration(color: theme.colorScheme.primary, borderRadius: BorderRadius.circular(14.h))), SizedBox(height: 5.v)])))); } 
+/// Section Widget
+PreferredSizeWidget _buildAppBar() { return CustomAppBar(leadingWidth: 48.h, leading: AppbarLeadingImage(imagePath: ImageConstant.imgArrowRight, margin: EdgeInsets.only(left: 24.h, top: 15.v, bottom: 16.v), onTap: () {onTapArrowLeft();}), centerTitle: true, title: AppbarSubtitle(text: "msg_payment_with_paypal".tr)); } 
+
+/// Navigates to the previous screen.
+onTapArrowLeft() { Get.back(); } 
+ }
