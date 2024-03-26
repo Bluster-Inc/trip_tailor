@@ -1,0 +1,15 @@
+import 'package:trip_tailor/widgets/custom_text_form_field.dart';import 'package:trip_tailor/widgets/custom_switch.dart';import 'package:trip_tailor/widgets/custom_elevated_button.dart';import 'package:flutter/material.dart';import 'package:trip_tailor/core/app_export.dart';import 'controller/wishlist_create_new_collection_controller.dart';
+// ignore_for_file: must_be_immutable
+class WishlistCreateNewCollectionBottomsheet extends StatelessWidget {WishlistCreateNewCollectionBottomsheet(this.controller, {Key? key}) : super(key: key);
+
+WishlistCreateNewCollectionController controller;
+
+@override Widget build(BuildContext context) { return Container(width: double.maxFinite, padding: EdgeInsets.symmetric(horizontal: 24.h, vertical: 16.v), decoration: AppDecoration.fillOnPrimaryContainer.copyWith(borderRadius: BorderRadiusStyle.customBorderTL35), child: Column(mainAxisSize: MainAxisSize.min, children: [Container(height: 8.v, width: 40.h, decoration: BoxDecoration(color: appTheme.gray100, borderRadius: BorderRadius.circular(4.h))), SizedBox(height: 18.v), _buildFrame(), SizedBox(height: 18.v), Divider(), SizedBox(height: 18.v), Align(alignment: Alignment.centerLeft, child: Text("lbl_collection_name".tr, style: CustomTextStyles.titleMediumGray600Medium)), SizedBox(height: 14.v), CustomTextFormField(controller: controller.nameController, hintText: "lbl_add_title".tr, hintStyle: CustomTextStyles.bodyLargeBluegray30001, textInputAction: TextInputAction.done, borderDecoration: TextFormFieldStyleHelper.outlineBlueGray), SizedBox(height: 29.v), Align(alignment: Alignment.centerLeft, child: Text("lbl_privacy_setting".tr, style: CustomTextStyles.titleMediumGray600Medium)), SizedBox(height: 12.v), _buildPayment(), SizedBox(height: 32.v), CustomElevatedButton(text: "lbl_save".tr), SizedBox(height: 26.v)])); } 
+/// Section Widget
+Widget _buildFrame() { return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("msg_create_new_collection".tr, style: CustomTextStyles.titleMedium18_1), CustomImageView(imagePath: ImageConstant.imgCloseGray600, height: 20.adaptSize, width: 20.adaptSize, onTap: () {onTapImgClose();})]); } 
+/// Section Widget
+Widget _buildPayment() { return Container(padding: EdgeInsets.symmetric(horizontal: 15.h, vertical: 17.v), decoration: AppDecoration.outlineBluegray1001.copyWith(borderRadius: BorderRadiusStyle.roundedBorder16), child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Padding(padding: EdgeInsets.only(top: 3.v), child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Text("msg_set_collection_to".tr, style: CustomTextStyles.titleSmallGray900), SizedBox(height: 9.v), Text("msg_anyone_can_find".tr, style: theme.textTheme.labelLarge)])), Obx(() => CustomSwitch(margin: EdgeInsets.symmetric(vertical: 10.v), value: controller.isSelectedSwitch.value, onChange: (value) {controller.isSelectedSwitch.value = value;}))])); } 
+
+/// Navigates to the previous screen.
+onTapImgClose() { Get.back(); } 
+ }

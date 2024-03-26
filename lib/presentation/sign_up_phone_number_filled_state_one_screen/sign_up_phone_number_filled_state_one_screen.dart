@@ -1,0 +1,9 @@
+import 'package:trip_tailor/widgets/app_bar/custom_app_bar.dart';import 'package:trip_tailor/widgets/app_bar/appbar_leading_image.dart';import 'package:trip_tailor/widgets/custom_phone_number.dart';import 'package:country_pickers/country.dart';import 'package:trip_tailor/widgets/custom_elevated_button.dart';import 'package:flutter/material.dart';import 'package:trip_tailor/core/app_export.dart';import 'controller/sign_up_phone_number_filled_state_one_controller.dart';class SignUpPhoneNumberFilledStateOneScreen extends GetWidget<SignUpPhoneNumberFilledStateOneController> {const SignUpPhoneNumberFilledStateOneScreen({Key? key}) : super(key: key);
+
+@override Widget build(BuildContext context) { return SafeArea(child: Scaffold(resizeToAvoidBottomInset: false, appBar: _buildAppBar(), body: Container(width: double.maxFinite, padding: EdgeInsets.symmetric(horizontal: 24.h, vertical: 26.v), child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Text("lbl_phone_number".tr, style: CustomTextStyles.headlineLargeGray900), SizedBox(height: 18.v), Container(width: 260.h, margin: EdgeInsets.only(right: 66.h), child: Text("msg_we_will_call_or".tr, maxLines: 2, overflow: TextOverflow.ellipsis, style: CustomTextStyles.titleMediumGray600Medium.copyWith(height: 1.65))), SizedBox(height: 15.v), Obx(() => CustomPhoneNumber(country: controller.selectedCountry.value, controller: controller.phoneNumberController, onTap: (Country value) {controller.selectedCountry.value = value;})), Spacer(flex: 31), CustomElevatedButton(text: "lbl_send_code".tr), Spacer(flex: 68)])))); } 
+/// Section Widget
+PreferredSizeWidget _buildAppBar() { return CustomAppBar(leadingWidth: double.maxFinite, leading: AppbarLeadingImage(imagePath: ImageConstant.imgVector, margin: EdgeInsets.fromLTRB(33.h, 22.v, 336.h, 22.v), onTap: () {onTapVector();})); } 
+
+/// Navigates to the previous screen.
+onTapVector() { Get.back(); } 
+ }
